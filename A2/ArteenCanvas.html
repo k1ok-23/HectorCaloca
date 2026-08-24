@@ -1,0 +1,58 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Pagina 3</title>
+  <style>
+    body{
+        background-color: darkolivegreen;
+        text-align: center;
+    }
+      canvas{
+          border: 3px solid brown;
+          background-color: white;
+      }
+  </style>
+    <script>
+        var x=Math.random() * 800;
+        var y=Math.random() * 600;
+        var dx=1;
+        function animate(){
+            requestAnimationFrame(animate);
+
+            var canvas = document.getElementById("micanvas");
+            var context = canvas.getContext("2d");
+
+            context.clearRect(0, 0, innerWidth, innerHeight);
+            
+            context.fillStyle="pink";
+            context.fillRect(x,100,100,100);
+            context.fillStyle="pink";
+            context.fillRect(x+200,100,100,100);
+            context.fillStyle="pink";
+            context.fillRect(x,300,100,100);
+            context.fillStyle="pink";
+            context.fillRect(x+200,300,100,100);
+            context.fillStyle="brown";
+            context.fillRect(x+100,200,100,100);
+            context.fillStyle="green";
+            context.fillRect(x+125,300,50,250);
+
+                if (x > 500 || x < 0){
+                    dx= -dx;
+                }
+              x+=dx;
+           
+            }
+            animate();
+    </script>
+
+  </head>
+<body>
+   <canvas id="micanvas" width="800" height="600"></canvas>
+  
+   <ol>
+        <li><a href="../index.html">Regresar al Menú</a></li>
+    </ol>
+</body>
+</html>
