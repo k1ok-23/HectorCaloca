@@ -1,0 +1,81 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Reto Onda Sinoidal</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+    <style>
+    body{
+        background-image: url("patron.jpg");
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        text-align: center;
+    }
+    canvas{
+        border: 3px solid brown;   
+        width: 80%;
+        height: auto;
+        }
+    h1 {
+        color: red;
+        text-align: center;
+        font-family: "Press Start 2P";
+        }
+    p {
+        font-family: verdana;
+        font-size: 20px;
+        }
+  </style>
+  </head>
+  <body>
+    <h1>Star Power!</h1>
+
+    <canvas id="canvas" width="1920" height="1080"></canvas>
+    
+    <script src="utils.js"></script>
+    <script src="Star.js"></script>
+    <script>
+    window.onload = function () {
+      var canvas = document.getElementById('canvas'),
+          context = canvas.getContext('2d'),
+          fondo = new Image();
+          fondo.src = "fondo.jpg";
+          star = new Star(),
+          angle = 0,
+          centerY = 1800,
+          range = 50,
+          xspeed = 7,
+          yspeed = .29;
+        
+      star.x = 0;
+        
+      (function drawFrame () {
+        window.requestAnimationFrame(drawFrame, canvas);
+        context.clearRect(0, 0, canvas.width, canvas.height);
+
+        context.drawImage(
+            fondo, 0, 0, canvas.width, canvas.height);
+
+        star.x += xspeed;
+
+        if (star.x > 1710 || star.x  < 0){
+                    xspeed = -xspeed;
+                }
+
+        star.y = centerY / 2 + Math.sin(angle) * range;
+        angle += yspeed;
+        star.draw(context);
+
+      }());
+    };
+    </script>
+
+    <ol>
+          <li><a href="../index.html">Regresar al Menú</a></li>
+      </ol>
+  </body>
+</html>
