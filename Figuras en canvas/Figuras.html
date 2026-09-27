@@ -1,0 +1,118 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <link rel="stylesheet" href="style.css">
+  </head>
+  <body>
+    <canvas id="canvas" width="1000" height="1000"></canvas>
+    <script>
+    window.onload = function () {
+      //Our code here...
+      var canvas = document.getElementById('canvas'),
+          context = canvas.getContext('2d');
+
+
+          /*Casa*/
+          context.save();
+          context.fillStyle = 'red';
+          context.beginPath();
+          context.moveTo(200,200);
+          context.lineTo(300,110);
+          context.lineTo(400,200);
+          context.lineTo(200,200);
+          context.fill();
+          context.stroke();
+          context.restore();
+          context.save();
+          context.fillStyle = 'beige';
+          context.beginPath();
+          context.moveTo(230,200);
+          context.lineTo(230,320);
+          context.lineTo(370,320);
+          context.lineTo(370,200);
+          context.lineTo(230,200);
+          context.fill();
+          context.stroke();
+          context.restore();
+
+
+          /*Hongo*/
+          context.save();
+          context.fillStyle = "purple";
+          context.beginPath();
+          context.moveTo(450,180);
+          context.quadraticCurveTo(525,80,600,180);
+          context.lineTo(600,180);
+          context.lineTo(450,180);
+          context.fill();
+          context.stroke();
+          context.restore();
+          context.save();
+          context.fillStyle = "beige";
+          context.beginPath();
+          context.moveTo(500,180);
+          context.lineTo(500,260);
+          context.quadraticCurveTo(525,280,550,260);
+          context.lineTo(550,180);
+          context.lineTo(500,180);
+          context.fill();
+          context.stroke();
+          context.restore();
+
+
+          /*Estrella*/
+          context.save();
+          context.fillStyle = "yellow";
+          context.beginPath();
+          context.moveTo(700,200);
+          context.lineTo(750,200);
+          context.lineTo(780,150);
+          context.lineTo(810,200);
+          context.lineTo(860,200);
+          context.lineTo(830,240);
+          context.lineTo(840,290);
+          context.lineTo(780,260);
+          context.lineTo(730,290);
+          context.lineTo(740,240);
+          context.lineTo(700,200);
+          context.fill();
+          context.stroke();
+          context.restore();
+
+
+           /*Luna*/
+          context.save();
+          context.fillStyle = "grey";
+          context.beginPath();
+          context.moveTo(300, 700);  
+          context.quadraticCurveTo(150, 600, 300, 500);
+          context.quadraticCurveTo(255, 600, 300, 700);
+          context.fill();
+          context.stroke();
+          context.restore();
+
+
+          /*Corazon*/
+          context.save();
+          context.fillStyle = "pink";
+          context.beginPath();
+          context.moveTo(600, 700);  
+          context.lineTo(520, 600);
+          context.quadraticCurveTo(540, 500, 600, 580);
+          context.quadraticCurveTo(660, 500, 680, 600);
+          context.lineTo(600, 700);
+          context.fill();
+          context.stroke();
+          context.restore();
+
+    };
+    </script>
+
+
+    <ol>
+          <li><a href="../index.html">Regresar al Menú</a></li>
+      </ol> 
+  </body>
+</html>
