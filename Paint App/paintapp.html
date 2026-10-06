@@ -1,0 +1,164 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Mi Paint</title>
+    <style>
+      body{ 
+        text-align: center;
+        margin-top: 20px;
+        background-color:burlywood;
+      }
+      canvas {
+        background-color: white;
+      }
+      .colores{
+        width: 100%;
+        height: 50px;
+        text-align: center;
+      }
+      .colores button{
+        width: 80px;
+        height: 40px;
+        margin-right: 5px;
+        margin-top: 5px;
+        color: white;
+        font: 25px impact;
+        cursor: pointer;
+        border-radius: 15px;
+      }
+      .colores button:hover{
+        opacity: 0.5;
+      }
+
+      #black{
+        background: black;
+      }
+      #red{
+        background: red;
+      }
+      #green{
+        background: green;
+      }
+      #blue{
+        background: blue;
+      }
+      #purple{
+        background: purple;
+      }
+      #yellow{
+        background: yellow;
+      }
+      #brown{
+        background: brown;
+      }
+
+       #stroke button{
+        width: 100px;
+        height: 50px;
+        background: #303030;
+        color: white;
+        font: 25px impact;
+        cursor: pointer;
+        margin-bottom: 5px;
+        border-radius: 15px;
+      }
+      #stroke button:hover{
+        opacity: 0.5;
+      }
+       
+       #otros button{
+        width: 300px;
+        height: 50px;
+        background: #bf3b07;
+        color: white;
+        font: 25px impact;
+        cursor: pointer;
+        margin-bottom: 5px;
+        border-radius: 15px;
+      }
+      #otros button:hover{
+        opacity: 0.5;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="colores">
+       <button id="black" type="button" value="#000000"></button>
+       <button id="red" type="button" value="#ff0000"></button>
+       <button id="green" type="button" value="#00ff00"></button>
+       <button id="blue" type="button" value="#0000ff"></button>
+       <button id="purple" type="button" value="#9D00FF"></button>
+       <button id="yellow" type="button" value="#FFFF00"></button>
+       <button id="brown" type="button" value="#964B00"></button>
+    </div>
+    <div id="stroke">
+        <button id="small" type="button">Small</button>
+        <button id="medium" type="button">Medium</button>
+        <button id="large" type="button">Large</button>
+    </div>
+    <div id="otros">
+        <button id="clear" type="button">Clear All</button>
+    </div>
+    <canvas id="canvas" width="1000" height="700"></canvas>
+    <aside>Click and draw with the mouse.</aside>
+    
+    <script src="utils.js"></script>
+    <script>
+    window.onload = function () {
+      var canvas = document.getElementById('canvas'),
+          context = canvas.getContext('2d'),
+          mouse = utils.captureMouse(canvas);
+
+      canvas.addEventListener('mousedown', function () {
+        context.beginPath();
+        context.moveTo(mouse.x, mouse.y);
+        canvas.addEventListener('mousemove', onMouseMove, false);
+      }, false);
+
+      canvas.addEventListener('mouseup', function () {
+        canvas.removeEventListener('mousemove', onMouseMove, false);
+      }, false);
+
+      function onMouseMove () {
+        context.lineTo(mouse.x, mouse.y);
+        context.stroke();
+      }
+
+      // Cambiar color de trazo
+      var colores = document.getElementsByClassName('colores')[0];
+
+      colores.addEventListener('click', function(event) {
+           context.strokeStyle = event.target.value;
+           });
+
+      // Cambiar tamaño del trazo
+        var smallButton = document.getElementById('small');
+        var mediumButton = document.getElementById('medium');
+        var largeButton = document.getElementById('large');
+
+        smallButton.addEventListener('click', function() {
+            context.lineWidth = 2;
+        });
+
+        mediumButton.addEventListener('click', function() {
+            context.lineWidth = 5;
+        });
+
+        largeButton.addEventListener('click', function() {
+            context.lineWidth = 10;
+        });
+
+      // Borrar todo
+       var clearButton = document.getElementById('clear');
+       clearButton.addEventListener('click', function() {
+            context.clearRect(0, 0, canvas.width, canvas.height);
+            });     
+    };
+    </script>
+
+    <ol>
+          <li><a href="../index.html">Regresar al Menú</a></li>
+      </ol> 
+  </body>
+</html>
