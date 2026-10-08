@@ -1,0 +1,113 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Reloj</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        canvas { 
+            background-image: url("clock.png");
+            background-repeat: no-repeat;
+        }
+    </style>
+  </head>
+  <body>
+    <canvas id="canvas" width="570" height="570"></canvas>
+
+    <script src="utils.js"></script>
+    <script src="./classes/arrow.js"></script>
+    <script>
+    window.onload = function () {
+    var canvas = document.getElementById('canvas'),
+        context = canvas.getContext('2d');
+
+    // Hour hand
+    var hora = new Image();
+    hora.src = "horas.png";
+
+    // Minute hand
+    var minuto = new Image();
+    minuto.src = "minutos.png";
+
+    // Second hand
+    var segundo = new Image();
+    segundo.src = "segundos.png";
+
+    // Rotation of each hand
+    var radianesHora = 0;
+    var radianesMinuto = 0;
+    var radianesSegundo = 0;
+
+    // Rotation speed
+    var vrHora = 0.5;
+    var vrMinuto = 1;
+    var vrSegundo = 2;
+
+    (function drawFrame () {
+        window.requestAnimationFrame(drawFrame, canvas);
+
+        context.clearRect(0, 0, canvas.width, canvas.height);
+
+        // -------------------
+        // HOUR HAND
+        // -------------------
+        context.save();
+        context.translate(285, 285);
+        context.scale(0.3, 0.3);
+        radianesHora += vrHora * Math.PI / 180;
+        context.rotate(radianesHora);
+
+        context.drawImage(
+            hora,
+            -hora.width / 2,
+            -hora.height / 2
+        );
+
+        context.restore();
+
+
+        // -------------------
+        // MINUTE HAND
+        // -------------------
+        context.save();
+        context.translate(285, 285);
+        context.scale(0.3, 0.3);
+        radianesMinuto += vrMinuto * Math.PI / 180;
+        context.rotate(radianesMinuto);
+
+        context.drawImage(
+            minuto,
+            -minuto.width / 2,
+            -minuto.height / 2
+        );
+
+        context.restore();
+
+
+        // -------------------
+        // SECOND HAND
+        // -------------------
+        context.save();
+        context.translate(285, 285);
+        context.scale(0.3, 0.3);
+        radianesSegundo += vrSegundo * Math.PI / 180;
+        context.rotate(radianesSegundo);
+
+        context.drawImage(
+            segundo,
+            -segundo.width / 2,
+            -segundo.height / 2
+        );
+
+        context.restore();
+      
+      }());
+    };
+    </script>
+
+
+    <ol>
+          <li><a href="../index.html">Regresar al Menú</a></li>
+      </ol>
+  </body>
+</html>
